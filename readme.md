@@ -12,6 +12,6 @@ bindsym $mod+Shift+l exec i3-sensible-terminal -e "bash -ic 'library'"
 requirements: 
 - `epy`
 - `python-blessed`
-- `zathura` (pdf)
+- `zathura` (pdf & japanese epub)
 
 thank you for checking it out!!!! ^~^
