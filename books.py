@@ -6,9 +6,10 @@ def list_supported_files(directory):
     return [f for f in os.listdir(directory) if f.endswith(('.epub', '.pdf'))]
 
 def is_japanese(text):
-    for char in text:
-        if ord(char) >= 0x4E00 and ord(char) <= 0x9FFF:
-            return True
+    for part in text.split('.'):
+        for char in part:
+            if '\u3040' <= char <= '\u309F' or '\u30A0' <= char <= '\u30FF' or '\u4E00' <= char <= '\u9FFF':
+                return True
     return False
 
 def open_file(file):
@@ -18,6 +19,7 @@ def open_file(file):
         subprocess.run(['epy', file])
     elif file.endswith('.pdf') or is_japanese(file):
         subprocess.run(['zathura', file])
+
 
 def main():
     term = Terminal()
